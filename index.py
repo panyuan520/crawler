@@ -13,7 +13,7 @@ from configs import FILTER, QUEUE, PROXY, getlogger
 
 logger = getlogger(__name__)
 
-
+pool = Pool.pool(10)
 
 
 class Crawler(object):
@@ -258,10 +258,8 @@ class Dianping(Crawler):
         print "starting ......"
         driver.cpush(QUEUE, self.url)
         while driver.clen(QUEUE) > 0:
-            url = driver.cpop(QUEUE)
-            print 'start handel url:%s' % url
-            self.handel(url)
-        #pool.join()    
+            pool.spawn(self.handel(driver.cpop(QUEUE)))
+        pool.join()    
         
 
 class Pga(Crawler):
