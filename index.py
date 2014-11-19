@@ -123,9 +123,9 @@ class Dianping(Crawler):
                 for city in citys:
                     href = self.abs_href + city.get('href') + "/sports"
                     city = city.text
-                    if city in [u'上海', u'天津', u'石家庄', u'鄂州']:
+                    #if city in [u'上海', u'天津', u'石家庄', u'鄂州']:
                         print city, province, href
-                        driver.push_url(href, 1, {'province':province, 'city':city, 'href':href})
+                    driver.push_url(href, 1, {'province':province, 'city':city, 'href':href})
         except Exception as e:
             logger.info("citylist error:%s" % str(e))
                 
@@ -323,7 +323,7 @@ if __name__ == "__main__":
     #pga()
     
     #get proxy ip
-    #Zdy("http://www.xici.net.co/")()
+    Zdy("http://www.xici.net.co/")()
    
     
     dianpin = Dianping("http://www.dianping.com/citylist")
