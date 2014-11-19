@@ -95,12 +95,10 @@ class Zdy(Crawler):
         
     def proxy(self):
         for i in range(1, 182):
-            print "http://www.xici.net.co/nn/%d" % i
-            body = self.fetch("http://www.xici.net.co/nn/%d" % i)
-            self.item(body)
+            pool.spawn(self.item(self.fetch("http://www.xici.net.co/nn/%d" % i)))
         for i in range(1, 123):
-            body = self.fetch("http://www.xici.net.co/wn/%d" % i)
-            self.item(body)
+            pool.spawn(self.item(self.fetch("http://www.xici.net.co/wn/%d" % i)))
+        pool.join()
             
     def __call__(self):
         self.proxy()
