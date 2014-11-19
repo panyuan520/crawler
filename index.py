@@ -13,7 +13,7 @@ from configs import FILTER, QUEUE, PROXY, getlogger
 
 logger = getlogger(__name__)
 
-pool = Pool.pool(10)
+pool = Pool(10)
 
 
 class Crawler(object):
