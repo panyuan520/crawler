@@ -34,7 +34,7 @@ class Crawler(object):
             request.add_header('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
             request.add_header('Referer', self.abs_href)
             request.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36')
-            return urllib2.urlopen(request).read()
+            return urllib2.urlopen(request, timeout=30).read()
         except Exception as e:
             logger.error("fetch url error %s" %  str(e))
             driver.cpush(QUEUE, url)
