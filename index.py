@@ -124,7 +124,7 @@ class Dianping(Crawler):
                     href = self.abs_href + city.get('href') + "/sports"
                     city = city.text
                     #if city in [u'上海', u'天津', u'石家庄', u'鄂州']:
-                        print city, province, href
+                    print city, province, href
                     driver.push_url(href, 1, {'province':province, 'city':city, 'href':href})
         except Exception as e:
             logger.info("citylist error:%s" % str(e))
