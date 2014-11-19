@@ -23,6 +23,7 @@ class Crawler(object):
         
     def fetch(self, url):
         try:
+            time.sleep(7)
             proxy = driver.zproxy(PROXY)
             print 'proxy url %s, fetch url%s' % (proxy, url)
             if proxy:
